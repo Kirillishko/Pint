@@ -36,6 +36,7 @@ export default function RootLayout() {
         <SafeAreaView style={styles.safeContainer}>
           <Stack>
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="pin/[id]" options={{ headerShown: false }} />
             <Stack.Screen name="+not-found" />
           </Stack>
           <StatusBar style="auto" />

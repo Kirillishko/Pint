@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'purple',
     borderCurve: 'continuous',
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 10 },

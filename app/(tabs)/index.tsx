@@ -3,14 +3,15 @@ import {
   Dimensions,
   Image,
   ImageSourcePropType,
+  Pressable,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
   View
 } from 'react-native';
 
-import { getImages } from '@/assets/mock/getImages';
-import { router } from 'expo-router';
+import { mock } from '@/assets/mock/getMock';
+import { Link, router } from 'expo-router';
 
 type ItemData = {
   id: string;
@@ -22,12 +23,10 @@ const screenWidth = Dimensions.get('window').width;
 const columnWidth = (screenWidth - 16 * 2 - 8) / 2; // Ширина колонок с учетом отступов
 
 export default function HomeScreen() {
-  const images = getImages();
-
-  const data = images.map((image, index) => ({
+  const data = mock.map((mockItem, index) => ({
     id: String(index),
-    image,
-    height: Math.floor(Math.random() * 100) + 200 // Разная высота для Pinterest-эффекта
+    image: mockItem.image,
+    height: Math.floor(Math.random() * 100) + 200
   }));
 
   const handlePress = (image: ImageSourcePropType) => {
@@ -36,13 +35,15 @@ export default function HomeScreen() {
 
   const renderColumn = (columnData: ItemData[]) => {
     return columnData.map((item) => (
-      <TouchableOpacity key={item.id} onPress={() => handlePress(item.image)} activeOpacity={1}>
-        <Image
-          source={item.image}
-          style={[styles.image, { height: item.height }]}
-          resizeMode="cover"
-        />
-      </TouchableOpacity>
+      <Link href={{ pathname: '/pin/[id]', params: { id: item.id } }} key={item.id} asChild>
+        <Pressable>
+          <Image
+            source={item.image}
+            style={[styles.image, { height: item.height }]}
+            resizeMode="cover"
+          />
+        </Pressable>
+      </Link>
     ));
   };
 
