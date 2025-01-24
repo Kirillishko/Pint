@@ -1,5 +1,5 @@
 import React, { FC, useMemo } from 'react';
-import { View, Text, Pressable, ScrollView, Image, StyleSheet, Dimensions } from 'react-native';
+import { Dimensions, Image, ScrollView, StyleSheet, View } from 'react-native';
 import { Link, useLocalSearchParams } from 'expo-router';
 import { mock } from '@/assets/mock/getMock';
 import resolveAssetSource from 'expo-asset/build/resolveAssetSource';

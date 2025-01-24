@@ -6,7 +6,6 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
-  TouchableOpacity,
   View
 } from 'react-native';
 
@@ -22,16 +21,12 @@ type ItemData = {
 const screenWidth = Dimensions.get('window').width;
 const columnWidth = (screenWidth - 16 * 2 - 8) / 2; // Ширина колонок с учетом отступов
 
-export default function HomeScreen() {
+const HomeScreen = () => {
   const data = mock.map((mockItem, index) => ({
     id: String(index),
     image: mockItem.image,
     height: Math.floor(Math.random() * 100) + 200
   }));
-
-  const handlePress = (image: ImageSourcePropType) => {
-    router.navigate('/(tabs)/notifications');
-  };
 
   const renderColumn = (columnData: ItemData[]) => {
     return columnData.map((item) => (
@@ -63,7 +58,7 @@ export default function HomeScreen() {
       </View>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -80,3 +75,5 @@ const styles = StyleSheet.create({
     marginBottom: 8
   }
 });
+
+export default HomeScreen;
